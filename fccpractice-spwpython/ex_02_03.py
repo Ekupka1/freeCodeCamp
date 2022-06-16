@@ -1,9 +1,9 @@
-#)2-03 EX pfe - Calculating Pay
+#)02-03 EX pfe - Calculating Pay
 
 sh = input('enter hours: ')
 sr = input('enter rate: ')
 
-try:
+try: # if you want it to catch the errors after every input then create a function
     fh = float(sh) #Danger Code
     fr = float(sr) #Danger Code
 except:
