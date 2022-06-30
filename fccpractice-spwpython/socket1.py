@@ -1,4 +1,4 @@
-#12 EX pfe - Makes a socket make a command and gather data and hacks a website
+#12 EX pfe - Makes a socket make a command and gather data (header and contents) and hacks a website
 
 import socket
 

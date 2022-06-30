@@ -1,4 +1,4 @@
-#12 EX pfe - Makes a socket communication easier
+#12 EX pfe - Makes a socket communication easier, only gets the contents
 
 from logging import FileHandler
 import urllib.request, urllib.parse, urllib.error
