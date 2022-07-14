@@ -1,5 +1,5 @@
-#13 EX pfe - Email database gathering the top ten
-#IT made the DB but doesn't put the data from the mbox in the DB
+#15 EX pfe - Email database gathering the top ten
+#It made the DB but doesn't put the data from the mbox in the DB, maybe something is wrong with the txt file
 
 import sqlite3 
 
@@ -10,7 +10,7 @@ cur.execute('DROP TABLE IF EXISTS Counts')
 cur.execute('''CREATE TABLE Counts (email TEXT, count INTEGER)''')
 
 fname = input("Enter file name: ")
-if(len(fname) < 1): fname = 'mbox-short.txt'
+if (len(fname) < 1): fname = 'mbox-short.txt'
 fh = open(fname)
 for line in fh:
     if not line.startswith('From: '): continue
@@ -18,8 +18,8 @@ for line in fh:
     email = pieces[1]
     cur.execute('SELECT count FROM Counts WHERE email = ?', (email,))
     row = cur.fetchone()
-    if row in None:
-        cur.execute('''INSERT INTO Counts (email, count) VALUE (?, 1)''', (email,))
+    if row is None:
+        cur.execute('''INSERT INTO Counts (email, count) VALUES (?, 1)''', (email,))
     else:
         cur.execute('UPDATE Counts SET count = count+1 WHERE email = ?', (email,))
     conn.commit()
@@ -27,5 +27,6 @@ for line in fh:
 sqlstr = 'SELECT email, count FROM Counts ORDER BY count DESC LIMIT 10'
 
 for row in cur.execute(sqlstr):
-    print(str(row[0], row[1]))
+    print(str(row[0]), row[1])
+
 cur.close()
