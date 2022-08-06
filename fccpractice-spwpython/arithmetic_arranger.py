@@ -20,25 +20,29 @@ def arithmetic_arranger(list, **TRUE):
         for firstRow in line[0-2]:
             firstRow = int(line[0])
             print(f"{firstRow:>5}", end='    ')
+            # math(line)
     print('\n')
     for line in list:
         line = line.split()
         for secRow in line[0+1]:
             secRow = int(line[2])
             print(f"{line[1]:>1} {secRow:>3}", end='    ')
+            math(line)
     print('\n')
-    for line in list:   
-        # math(line)
+    for line in list:
+        line = line.split()
         # print(f"{line[1]:>1} { line[2]:>3}")
-        print("-----\n", f"{math(line):>4}")
+        print(f"{math(line):>5}", end='    ')
         # print('\n')
-        # math(line)
+        
 
 def math(line):
     if line[1] == "-":
         sum = int(line[0]) - int(line[2])
+        # print("-----\n", f"{sum:>4}")
     elif line[1] == "+":
         sum = int(line[0]) + int(line[2])
+        # print("-----\n", f"{sum:>4}")
     return sum
 
 arithmetic_arranger(list)
