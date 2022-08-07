@@ -1,9 +1,11 @@
 #Arithmetic Formatter - Gathers a function then performs mathematics
 
-#  Create a function that receives a list of strings that are arithmetic problems 
+# Create a function that receives a list of strings that are arithmetic problems 
 # and returns the problems arranged vertically and side-by-side. The function should 
 # optionally take a second argument. When the second argument is set to True, the answers 
 # should be displayed.
+
+#Run first shows the list and if it passes the error check with TRUE then show answer
 
 import sys
 
