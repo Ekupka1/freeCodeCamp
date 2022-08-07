@@ -5,22 +5,15 @@
 # optionally take a second argument. When the second argument is set to True, the answers 
 # should be displayed.
 
-list = ["32 + 698", "3801 - 2", "45 + 43", "123 + 49"]
+import sys
 
-# arithmetic_arranger(["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True)
-
-# addition and subtraction. Multiplication and division will return an error. only didgets, max 4 didgets, limit is five problems
-
-# fname = input('Enter File: ')
-# if len(fname) < 1 : arithmetic_arranger(list)
-
-def arithmetic_arranger(list, **TRUE):
+def arithmetic_arranger(list, *args):
+    checkList(list)
     for line in list:
         line = line.split()
         for firstRow in line[0-2]:
             firstRow = int(line[0])
             print(f"{firstRow:>5}", end='    ')
-            # math(line)
     print('\n')
     for line in list:
         line = line.split()
@@ -35,6 +28,23 @@ def arithmetic_arranger(list, **TRUE):
         print(f"{math(line):>5}", end='    ')
         # print('\n')
         
+# ERRORS - addition and subtraction, multiplication and division will return an error, only digits, max 4 digits, limit is five problems
+def checkList(list):
+    count = len(list)
+    if count > 5:
+        sys.exit("Error: Too many problems.") 
+    for line in list:   
+        line = line.split()
+        lenOne = len(line[0])
+        lenTwo = len(line[2])
+        x = line[0].isnumeric()
+        y = line[2].isnumeric()
+        if line[1] == "*" or line[1] == "/":
+            sys.exit("Error: Operator must be '+' or '-'.")
+        elif x == False or y == False: 
+            sys.exit("Error: Numbers must only contain digits.") 
+        elif lenOne > 4 or lenTwo > 4:
+            sys.exit("Error: Numbers cannot be more than four digits.")
 
 def math(line):
     if line[1] == "-":
@@ -45,5 +55,11 @@ def math(line):
         # print("-----\n", f"{sum:>4}")
     return sum
 
-arithmetic_arranger(list)
+
+fname = input('Enter a arithmetic question: \n')
+if len(fname) < 1 : fname = arithmetic_arranger(["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True)
+
+# list = ["32 + 698", "3801 - 2", "45 + 43", "123 + 49" , "123 - 49"]
+
+
 
