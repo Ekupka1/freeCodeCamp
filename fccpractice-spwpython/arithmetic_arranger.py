@@ -8,6 +8,7 @@
 #Run first shows the list and if it passes the error check with TRUE then show answer
 
 import sys
+import time
 
 def arithmetic_arranger(list, *args):
     checkList(list)
@@ -24,10 +25,14 @@ def arithmetic_arranger(list, *args):
             print(f"{line[1]:>1} {secRow:>3}", end='    ')
             math(line)
     print('\n')
-    for line in list:
-        line = line.split()
+
+    # print(bool(list))
+    time.sleep(3)
+    if not False:
+        for line in list:
+            line = line.split()
         # print(f"{line[1]:>1} { line[2]:>3}")
-        print(f"{math(line):>5}", end='    ')
+            print(f"{math(line):>5}", end='    ')
         # print('\n')
         
 # ERRORS - addition and subtraction, multiplication and division will return an error, only digits, max 4 digits, limit is five problems
@@ -47,8 +52,12 @@ def checkList(list):
             sys.exit("Error: Numbers must only contain digits.") 
         elif lenOne > 4 or lenTwo > 4:
             sys.exit("Error: Numbers cannot be more than four digits.")
+        else:
+            list = True
+            
 
 def math(line):
+    sum = 0
     if line[1] == "-":
         sum = int(line[0]) - int(line[2])
         # print("-----\n", f"{sum:>4}")
@@ -59,9 +68,10 @@ def math(line):
 
 
 fname = input('Enter a arithmetic question: \n')
-if len(fname) < 1 : fname = arithmetic_arranger(["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True)
+if len(fname) < 1 : fname = arithmetic_arranger(["32 - 8", "1 - 3801", "9999 + 9999", "523 - 49"], True)
 
 # list = ["32 + 698", "3801 - 2", "45 + 43", "123 + 49" , "123 - 49"]
+
 
 
 
